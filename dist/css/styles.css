@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+:root {
+    --button-blue-color: #1e4be0
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+html {
+    overflow: hidden;
+}
+
+body {
+    background-color: rgb(95, 93, 93);
+}
+
+/* ---------------------------------------------------------------------- */
+/* general button styles */
+.btn {
+    border: none;
+    font-size: 1em;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: .3s ease-in;
+}
+
+.btn:hover {
+    color: #fff;
+    background-color: var(--button-blue-color);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Add Item Section */
+.addItem {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 40vw;
+    height: 100vh;
+    background-color: #333;
+    color: white;
+    box-shadow: 0 0 5px #000;
+    transform: translateX(-50vw);
+    transition: .3s ease-in;
+    z-index: 1;
+}
+
+.addItem.visible {
+    transform: translateX(0);
+}
+
+#add-item-btn {
+    position: absolute;
+    top: 30px;
+    left: 30px
+}
+
+#back-item-btn {
+    position: absolute;
+    display: block;
+    width: 90%;
+    top: 3%;
+    left: 50%;
+    transform: translate(-50%, -3%);
+    font-size: 1em;
+}
+
+#submit-new-item {
+    position: absolute;
+    width: 90%;
+    display: block;
+    bottom: 3%;
+    left: 50%;
+    transform: translate(-50%, -3%);
+}
+
+.selector {
+    min-height: 50vh;
+}
+
+.selector select {
+    margin: 1em 0;
+    width: 75%;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-group input,
+label {
+    margin-top: 1em;
+    font-size: 1.5em;
+}
+
+.form-group input {
+    border-radius: 3px;
+    border: none;
+    padding: 5px;
+    width: 75%;
+}
+
+.input-field {
+    transition: .1s ease-in;
+}
+
+.input-field:focus {
+    box-shadow: 0 0 10px #298fe2;
+}
+
+/* ---------------------------------------------------------------------- */
+/* main container */
+
+.container {
+    position: relative;
+    display: grid;
+    height: 90vh;
+    width: 90vw;
+    top: 50px;
+    margin: 0 auto;
+    background-color: #ddd;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+        'date_time date_time'
+        'drinks bill'
+        'apps bill'
+        'lunch bill'
+        'dinner bill'
+        'dessert bill';
+}
+
+#date-time {
+    grid-area: date_time;
+}
+
+#drinks {
+    grid-area: drinks;
+}
+
+#apps {
+    grid-area: apps;
+}
+
+#lunch {
+    grid-area: lunch;
+}
+
+#dinner {
+    grid-area: dinner;
+}
+
+#dessert {
+    grid-area: dessert;
+}
+
+#bill {
+    grid-area: bill;
+}

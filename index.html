@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="dist/css/styles.css" />
+    <title>Restaurant Order Form</title>
+  </head>
+  <body>
+    <div class="addItem" id="addItem">
+      <button class="btn" id="back-item-btn">Back</button>
+      <div class="selector">
+        <h1>Select Category to Add Item To</h1>
+        <select id="WhichMenuPart">
+          <option value="default" selected disabled hidden>Choose Menu Category</option>
+          <option value="Drinks">Drinks</option>
+          <option value="apps">Appetizer</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+          <option value="dessert">Dessert</option>
+        </select>
+        <form class="form-group">
+          <label for="item-name">Menu Item Name</label>
+          <input type="text" id="item-name" class="input-field" placeholder="Enter new item..." />
+          <label for="item-price">Menu Item Price</label>
+          <input type="number" id="item-price" class="input-field" placeholder="Enter new price..." />
+        </form>
+      </div>
+      <button class="btn" id="submit-new-item">Submit Item</button>
+    </div>
+    <main class="container">
+      <div class="row" id="date-time">
+        <button class="btn" id="add-item-btn">Add Item</button>
+      </div>
+      <div class="row" id="drinks"></div>
+      <div class="row" id="apps"></div>
+      <div class="row" id="lunch"></div>
+      <div class="row" id="dinner"></div>
+      <div class="row" id="dessert"></div>
+      <div id="bill"></div>
+    </main>
+    <script src="dist/scripts/scripts.js"></script>
+  </body>
+</html>
