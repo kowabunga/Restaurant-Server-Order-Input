@@ -1,5 +1,5 @@
 {
-  "drinks": [
+  "Drinks": [
     {
       "name": "Coffee",
       "price": 1.99
@@ -29,7 +29,7 @@
       "price": 5.99
     }
   ],
-  "apps": [
+  "Appetizers": [
     {
       "name": "Mozz Sticks",
       "price": 4.99
@@ -51,7 +51,7 @@
       "price": 6.99
     }
   ],
-  "lunch": [
+  "Lunch": [
     {
       "name": "Classic Burger",
       "price": 10.99
@@ -73,7 +73,7 @@
       "price": 8.99
     }
   ],
-  "dinner": [
+  "Dinner": [
     {
       "name": "Rib-Eye",
       "price": 24.99
@@ -95,7 +95,7 @@
       "price": 19.99
     }
   ],
-  "dessert": [
+  "Dessert": [
     {
       "name": "Rainbow Cake",
       "price": 7.99

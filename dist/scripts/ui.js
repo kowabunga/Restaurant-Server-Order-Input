@@ -6,14 +6,34 @@ class UI {
   populateDate(time) {
     this.timeSection.innerText = time;
   }
+
+  // App.js calls function sending json file data, and the id of the target button
+  // Target button id is checked to see if it is included.
+  // Based on result, function calls loopthrough() with particular argument equal to the classNames
+  generateModalHtml(data, target) {
+    if (target.includes('drinks')) {
+      this.loopThrough(data, 'Drinks');
+    } else if (target.includes('apps')) {
+      this.loopThrough(data, 'Appetizers');
+    } else if (target.includes('lunch')) {
+      this.loopThrough(data, 'Lunch');
+    } else if (target.includes('dinner')) {
+      this.loopThrough(data, 'Dinner');
+    } else if (target.includes('dessert')) {
+      this.loopThrough(data, 'Dessert');
+    } else {
+      console.log('Error! Not a valid button.');
+    }
+  }
+
+  // This function loops through the appropriate array from the json file object based on the arrName passed in from
   loopThrough(data, arrName) {
     let menu_items = '';
     data[arrName].forEach(item => {
-      console.log(item.name, item.price);
       menu_items += `
         <div class="menu-item">
           <div class="name">${item.name}</div>
-          <div class="price">${item.price}</div>
+          <div class="price">$${item.price}</div>
         </div>
       `;
     });
@@ -31,20 +51,5 @@ class UI {
     `;
 
     this.modal.innerHTML = output;
-  }
-  generateModalHtml(data, target) {
-    if (target.includes('drinks')) {
-      this.loopThrough(data, 'drinks');
-    } else if (target.includes('apps')) {
-      this.loopThrough(data, 'apps');
-    } else if (target.includes('lunch')) {
-      this.loopThrough(data, 'lunch');
-    } else if (target.includes('dinner')) {
-      this.loopThrough(data, 'dinner');
-    } else if (target.includes('dessert')) {
-      this.loopThrough(data, 'dessert');
-    } else {
-      console.log('Error! Not a valid button.');
-    }
   }
 }

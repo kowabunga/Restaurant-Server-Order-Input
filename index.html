@@ -7,17 +7,19 @@
     <title>Restaurant Order Form</title>
   </head>
   <body>
+    <button class="btn" id="add-item-btn">Add Item</button>
+    <!-- Add new item sidebar -->
     <div class="addItem" id="addItem">
       <button class="btn" id="back-item-btn">&times;</button>
       <div class="selector">
         <h1>Select Category to Add Item To</h1>
         <select id="WhichMenuPart">
           <option value="default" selected disabled hidden>Choose Menu Category</option>
-          <option value="Drinks">Drinks</option>
-          <option value="apps">Appetizer</option>
-          <option value="lunch">Lunch</option>
-          <option value="dinner">Dinner</option>
-          <option value="dessert">Dessert</option>
+          <option id="drink-add" value="Drinks">Drinks</option>
+          <option id="app-add" value="apps">Appetizer</option>
+          <option id="lunch-add" value="lunch">Lunch</option>
+          <option id="dinner-add" value="dinner">Dinner</option>
+          <option id="dessert-add" value="dessert">Dessert</option>
         </select>
         <form class="form-group">
           <label for="item-name">Menu Item Name</label>
@@ -29,12 +31,11 @@
       <button class="btn" id="submit-new-item">Submit Item</button>
     </div>
 
-    <button class="btn" id="add-item-btn">Add Item</button>
-
-    <!-- Menu items temporarily hard coded until javascript added -->
+    <!-- Main container -->
     <main class="container">
       <div class="row date-row" id="date-time"></div>
 
+      <!-- Menu item buttons -->
       <div class="row">
         <div class="menu-items-btns">
           <button class="btn menu-btns" id="drinks-btn">Drinks</button>
@@ -47,36 +48,9 @@
       <div id="bill">Generated bill goes here</div>
 
       <!-- Modal -->
-
+      <!-- Modal contents will be generated dynamically via javascript -->
       <div class="modal" id="drinks-modal">
-        <div class="modal-content">
-          <!-- <div class="modal-header">
-            <h3 id="drink-title" class="menu-title">Drinks</h3>
-            <span id="close">&times;</span>
-          </div>
-          <div class="modal-body">
-            <div class="menu-item">
-              <div class="name">Coffee</div>
-              <div class="price">$1.99</div>
-            </div>
-            <div class="menu-item">
-              <div class="name">Soda</div>
-              <div class="price">$1.99</div>
-            </div>
-            <div class="menu-item">
-              <div class="name">Red Wine</div>
-              <div class="price">Glass: $5.99</div>
-            </div>
-            <div class="menu-item">
-              <div class="name">Red Wine</div>
-              <div class="price">Bottle: $49.99</div>
-            </div>
-            <div class="menu-item">
-              <div class="name">Beer</div>
-              <div class="price">Bottle: $5.99</div>
-            </div>
-          </div>
-        </div> -->
+        <div class="modal-content"></div>
       </div>
     </main>
     <script src="dist/scripts/getData.js"></script>
