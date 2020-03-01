@@ -1,0 +1,120 @@
+{
+  "drinks": [
+    {
+      "name": "Coffee",
+      "price": 1.99
+    },
+    {
+      "name": "Soda",
+      "price": 1.99
+    },
+    {
+      "name": "Red Wine Glass",
+      "price": 8.99
+    },
+    {
+      "name": "White Wine Glass",
+      "price": 6.99
+    },
+    {
+      "name": "Red Wine Bottle",
+      "price": 34.99
+    },
+    {
+      "name": "White Wine Bottle",
+      "price": 24.99
+    },
+    {
+      "name": "Beer Bottle",
+      "price": 5.99
+    }
+  ],
+  "apps": [
+    {
+      "name": "Mozz Sticks",
+      "price": 4.99
+    },
+    {
+      "name": "Tacos",
+      "price": 1.49
+    },
+    {
+      "name": "Baked Potatos",
+      "price": 4.99
+    },
+    {
+      "name": "Chicken Wings",
+      "price": 6.99
+    },
+    {
+      "name": "Nachos",
+      "price": 6.99
+    }
+  ],
+  "lunch": [
+    {
+      "name": "Classic Burger",
+      "price": 10.99
+    },
+    {
+      "name": "Lobster Mac 'n Cheese",
+      "price": 15.99
+    },
+    {
+      "name": "French Dip",
+      "price": 12.99
+    },
+    {
+      "name": "Grilled Cheese",
+      "price": 6.99
+    },
+    {
+      "name": "Tuna Salad Sandwich",
+      "price": 8.99
+    }
+  ],
+  "dinner": [
+    {
+      "name": "Rib-Eye",
+      "price": 24.99
+    },
+    {
+      "name": "Salmon",
+      "price": 20.99
+    },
+    {
+      "name": "Tuna",
+      "price": 23.99
+    },
+    {
+      "name": "Chicken Breast",
+      "price": 15.99
+    },
+    {
+      "name": "Roasted Duck",
+      "price": 19.99
+    }
+  ],
+  "dessert": [
+    {
+      "name": "Rainbow Cake",
+      "price": 7.99
+    },
+    {
+      "name": "Fudge Explosion",
+      "price": 5.99
+    },
+    {
+      "name": "Cheese Cake",
+      "price": 9.99
+    },
+    {
+      "name": "Ice Cream Sundae",
+      "price": 4.99
+    },
+    {
+      "name": "Rainbow Cake",
+      "price": 7.99
+    }
+  ]
+}

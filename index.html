@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="addItem" id="addItem">
-      <button class="btn" id="back-item-btn">Back</button>
+      <button class="btn" id="back-item-btn">&times;</button>
       <div class="selector">
         <h1>Select Category to Add Item To</h1>
         <select id="WhichMenuPart">
@@ -33,66 +33,53 @@
 
     <!-- Menu items temporarily hard coded until javascript added -->
     <main class="container">
-      <div class="row" id="date-time"></div>
-      <h3 id="drink-title" class="menu-title">Drinks</h3>
-      <div class="row" id="drinks">
-        <div class="menu-item">
-          <div class="name">
-            Coffee
-            <div class="price">$1.99</div>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="name">Soda</div>
-          <div class="price">$1.99</div>
-        </div>
-        <div class="menu-item">
-          <div class="name">Red Wine</div>
-          <div class="price">Glass: $5.99</div>
-        </div>
-        <div class="menu-item">
-          <div class="name">Red Wine</div>
-          <div class="price">Bottle: $49.99</div>
-        </div>
-        <div class="menu-item">
-          <div class="name">Beer</div>
-          <div class="price">Bottle: $5.99</div>
+      <div class="row date-row" id="date-time"></div>
+
+      <div class="row">
+        <div class="menu-items-btns">
+          <button class="btn menu-btns" id="drinks-btn">Drinks</button>
+          <button class="btn menu-btns" id="apps-btn">Appetizers</button>
+          <button class="btn menu-btns" id="lunch-btn">Lunch</button>
+          <button class="btn menu-btns" id="dinner-btn">Dinner</button>
+          <button class="btn menu-btns" id="dessert-btn">Desserts</button>
         </div>
       </div>
-
-      <h3 id="app-title" class="menu-title">Appetizers</h3>
-      <div class="row" id="apps">
-        <div class="menu-item">
-          <div class="name">Mozz Sticks</div>
-          <div class="price">$4.99</div>
-        </div>
-        <div class="menu-item">
-          <div class="name">Tacos</div>
-          <div class="price">$1.49 each</div>
-        </div>
-        <div class="menu-item">
-          <div class="name">Baked Potatos</div>
-          <div class="price">$4.99</div>
-        </div>
-        <div class="menu-item">
-          <div class="name">Chicken Wings</div>
-          <div class="price">$6.99</div>
-        </div>
-        <div class="menu-item">
-          <div class="name">Nachos</div>
-          <div class="price">$6.99</div>
-        </div>
-      </div>
-
-      <h3 id="lunch-title" class="menu-title">Lunch</h3>
-      <div class="row" id="lunch"></div>
-
-      <h3 id="dinner-title" class="menu-title">Dinner</h3>
-      <div class="row" id="dinner"></div>
-      <h3 id="dessert-title" class="menu-title">Dessert</h3>
-      <div class="row" id="dessert"></div>
       <div id="bill">Generated bill goes here</div>
+
+      <!-- Modal -->
+
+      <div class="modal" id="drinks-modal">
+        <div class="modal-content">
+          <!-- <div class="modal-header">
+            <h3 id="drink-title" class="menu-title">Drinks</h3>
+            <span id="close">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="menu-item">
+              <div class="name">Coffee</div>
+              <div class="price">$1.99</div>
+            </div>
+            <div class="menu-item">
+              <div class="name">Soda</div>
+              <div class="price">$1.99</div>
+            </div>
+            <div class="menu-item">
+              <div class="name">Red Wine</div>
+              <div class="price">Glass: $5.99</div>
+            </div>
+            <div class="menu-item">
+              <div class="name">Red Wine</div>
+              <div class="price">Bottle: $49.99</div>
+            </div>
+            <div class="menu-item">
+              <div class="name">Beer</div>
+              <div class="price">Bottle: $5.99</div>
+            </div>
+          </div>
+        </div> -->
+      </div>
     </main>
+    <script src="dist/scripts/getData.js"></script>
     <script src="dist/scripts/ui.js"></script>
     <script src="dist/scripts/app.js"></script>
   </body>

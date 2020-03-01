@@ -57,12 +57,11 @@ body {
 
 #back-item-btn {
     position: absolute;
-    display: block;
-    width: 90%;
-    top: 3%;
-    left: 50%;
-    transform: translate(-50%, -3%);
-    font-size: 1em;
+    width: 15%;
+    top: 2%;
+    left: 90%;
+    transform: translate(-75%, -2%);
+    font-size: 2em;
 }
 
 #submit-new-item {
@@ -130,43 +129,43 @@ label {
     color: white;
     background-color: rgb(95, 93, 93);
     box-shadow: 0 0 5px #fff;
-    grid-template-columns: .3fr 3fr 1fr;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 4fr;
     grid-template-areas:
-        'date_time date_time date_time'
-        'drinks_title drinks bill'
-        'apps_title apps bill'
-        'lunch_title lunch bill'
-        'dinner_title dinner bill'
-        'dessert_title dessert bill';
+        'date_time date_time'
+        'items bill';
 }
 
 .row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
     padding-left: 5px;
 }
 
-.menu-item {
-    cursor: pointer;
-    color: white;
-    word-wrap: break-word;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    width: 100px;
-    height: 100px;
-    background-color: rgb(111, 111, 243);
-    border-radius: 5px;
-    padding: 5px;
-    font-size: 1.3em;
-    line-height: 1.5;
+
+.menu-items-btns {
+    grid-area: items;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
 }
 
-.menu-title {
+.menu-btns {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 80%;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(111, 111, 243);
+    margin: 10px 10px 0 0;
 }
 
 #add-item-btn {
@@ -187,46 +186,6 @@ label {
     border-radius: 5px 5px 0 0;
 }
 
-#drinks-title {
-    grid-area: drink_title;
-}
-
-#drinks {
-    grid-area: drinks;
-}
-
-#apps-title {
-    grid-area: apps_title;
-}
-
-#apps {
-    grid-area: apps;
-}
-
-#lunch-title {
-    grid-area: lunch_title;
-}
-
-#lunch {
-    grid-area: lunch;
-}
-
-#dinner-title {
-    grid-area: dinner_title;
-}
-
-#dinner {
-    grid-area: dinner;
-}
-
-#dessert-title {
-    grid-area: dessert_title;
-}
-
-#dessert {
-    grid-area: dessert;
-}
-
 #bill {
     grid-area: bill;
     background-color: #fff;
@@ -234,23 +193,103 @@ label {
     border-bottom-right-radius: 5px;
 }
 
+/* ------------------------------------------------------------------- */
+/* modals */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, .3);
+    animation: showModal .75s ease forwards;
+}
+
+.modal-content {
+    flex-direction: column;
+    background-color: rgb(95, 93, 93);
+    border-radius: 3px;
+    width: 60%;
+    min-height: 25vh;
+    margin: 20% auto;
+    padding: 0%;
+    border-radius: 3px;
+}
+
+.modal-header {
+    position: relative;
+    background-color: #298fe2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 3px 3px 0 0;
+}
+
+#close {
+    font-size: 3em;
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    transform: translate(-3%, -50%);
+    cursor: pointer;
+}
+
+.modal-header h3 {
+    margin-bottom: 1em;
+    font-size: 1.5em;
+}
+
+.modal-body {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 15px;
+    width: 100%;
+    margin: -5px -5px;
+}
+
+
+.menu-item {
+    cursor: pointer;
+    color: white;
+    word-wrap: break-word;
+    width: 125px;
+    height: 125px;
+    background-color: rgb(111, 111, 243);
+    border-radius: 5px;
+    font-size: 1.3em;
+    line-height: 1.5;
+    text-align: center;
+    margin: 5px 5px;
+}
+
 @media(max-width: 600px) {
     .container {
-        width: 100%;
-        height: 100%;
         grid-template-columns: 1fr;
         grid-template-areas:
             'date_time'
-            'drinks_title'
-            'drinks'
-            'apps_title'
-            'apps'
-            'lunch_title'
-            'lunch'
-            'dinner_title'
-            'dinner'
-            'dessert_title'
-            'dessert'
+            'items'
             'bill';
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}
+
+/* ------------------------------------------------------------------- */
+@keyframes showModal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }

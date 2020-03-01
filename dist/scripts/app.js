@@ -2,10 +2,14 @@
 const addItemBtn = document.getElementById('add-item-btn'),
   backItemBtn = document.getElementById('back-item-btn'),
   addItemMenu = document.getElementById('addItem'),
-  submitItemBtn = document.getElementById('submit-new-item');
+  submitItemBtn = document.getElementById('submit-new-item'),
+  menuItemButtons = document.querySelector('.menu-items-btns'),
+  closeModalBtn = document.getElementById('close'),
+  modal = document.querySelector('.modal');
 
 // classes
-const ui = new UI();
+const ui = new UI(),
+  menuItems = new MenuItems();
 
 /* ---------------------------------------------------------------------- */
 // Trim Date and get time
@@ -29,16 +33,26 @@ setInterval(() => {
 addItemBtn.addEventListener('click', showAddItem);
 backItemBtn.addEventListener('click', hideAddItem);
 submitItemBtn.addEventListener('click', addNewItem);
+menuItemButtons.addEventListener('click', displayModal);
+
+// We can't add the close button here because it is generated dynamically.
+// To get around this, we add an event listener to the window object
+// When the target of what is clicked is either the object with the 'modal class' or
+// the span with the id of 'close' (the X), close the modal
+window.addEventListener('click', e => {
+  if (e.target.classList.contains('modal') || e.target.id === 'close') {
+    closeModal();
+  }
+});
 
 /* ---------------------------------------------------------------------- */
-// show/hide add item sidebar
+// show/hide add item sidebar+
 function showAddItem(e) {
   e.preventDefault();
   if (!addItemMenu.classList.contains('visible')) {
     addItemMenu.classList.add('visible');
   }
 }
-
 function hideAddItem(e) {
   e.preventDefault();
   if (addItemMenu.classList.contains('visible')) {
@@ -46,8 +60,28 @@ function hideAddItem(e) {
   }
 }
 
+// Add new item to menu
 function addNewItem(e) {
   e.preventDefault();
   hideAddItem(e);
   console.log('New item added.');
+}
+
+// Display/Close modal
+function displayModal(e) {
+  e.preventDefault();
+  getModalData(e.target.id);
+  modal.style.display = 'block';
+}
+
+function closeModal() {
+  modal.style.display = 'none';
+}
+
+// This function handles getting the data to create the modal and calls a UI class function to generate the modal
+function getModalData(target) {
+  menuItems
+    .getData()
+    .then(data => ui.generateModalHtml(data, target))
+    .catch(err => console.log(err));
 }
