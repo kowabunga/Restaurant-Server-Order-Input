@@ -28,17 +28,72 @@
       </div>
       <button class="btn" id="submit-new-item">Submit Item</button>
     </div>
+
+    <button class="btn" id="add-item-btn">Add Item</button>
+
+    <!-- Menu items temporarily hard coded until javascript added -->
     <main class="container">
-      <div class="row" id="date-time">
-        <button class="btn" id="add-item-btn">Add Item</button>
+      <div class="row" id="date-time"></div>
+      <h3 id="drink-title" class="menu-title">Drinks</h3>
+      <div class="row" id="drinks">
+        <div class="menu-item">
+          <div class="name">
+            Coffee
+            <div class="price">$1.99</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="name">Soda</div>
+          <div class="price">$1.99</div>
+        </div>
+        <div class="menu-item">
+          <div class="name">Red Wine</div>
+          <div class="price">Glass: $5.99</div>
+        </div>
+        <div class="menu-item">
+          <div class="name">Red Wine</div>
+          <div class="price">Bottle: $49.99</div>
+        </div>
+        <div class="menu-item">
+          <div class="name">Beer</div>
+          <div class="price">Bottle: $5.99</div>
+        </div>
       </div>
-      <div class="row" id="drinks"></div>
-      <div class="row" id="apps"></div>
+
+      <h3 id="app-title" class="menu-title">Appetizers</h3>
+      <div class="row" id="apps">
+        <div class="menu-item">
+          <div class="name">Mozz Sticks</div>
+          <div class="price">$4.99</div>
+        </div>
+        <div class="menu-item">
+          <div class="name">Tacos</div>
+          <div class="price">$1.49 each</div>
+        </div>
+        <div class="menu-item">
+          <div class="name">Baked Potatos</div>
+          <div class="price">$4.99</div>
+        </div>
+        <div class="menu-item">
+          <div class="name">Chicken Wings</div>
+          <div class="price">$6.99</div>
+        </div>
+        <div class="menu-item">
+          <div class="name">Nachos</div>
+          <div class="price">$6.99</div>
+        </div>
+      </div>
+
+      <h3 id="lunch-title" class="menu-title">Lunch</h3>
       <div class="row" id="lunch"></div>
+
+      <h3 id="dinner-title" class="menu-title">Dinner</h3>
       <div class="row" id="dinner"></div>
+      <h3 id="dessert-title" class="menu-title">Dessert</h3>
       <div class="row" id="dessert"></div>
-      <div id="bill"></div>
+      <div id="bill">Generated bill goes here</div>
     </main>
-    <script src="dist/scripts/scripts.js"></script>
+    <script src="dist/scripts/ui.js"></script>
+    <script src="dist/scripts/app.js"></script>
   </body>
 </html>

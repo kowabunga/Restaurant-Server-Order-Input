@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
-:root {
-    --button-blue-color: #1e4be0
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -16,7 +12,7 @@ html {
 }
 
 body {
-    background-color: rgb(95, 93, 93);
+    background-color: rgb(17, 17, 17);
 }
 
 /* ---------------------------------------------------------------------- */
@@ -28,12 +24,12 @@ body {
     padding: 5px;
     cursor: pointer;
     background-color: #fff;
-    transition: .3s ease-in;
+    transition: .3s ease;
 }
 
 .btn:hover {
     color: #fff;
-    background-color: var(--button-blue-color);
+    background-color: rgb(17, 88, 182);
 }
 
 /* ---------------------------------------------------------------------- */
@@ -57,12 +53,6 @@ body {
 
 .addItem.visible {
     transform: translateX(0);
-}
-
-#add-item-btn {
-    position: absolute;
-    top: 30px;
-    left: 30px
 }
 
 #back-item-btn {
@@ -130,40 +120,107 @@ label {
 
 .container {
     position: relative;
+    z-index: 0;
     display: grid;
     height: 90vh;
     width: 90vw;
     top: 50px;
     margin: 0 auto;
-    background-color: #ddd;
-    grid-template-columns: 3fr 1fr;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(95, 93, 93);
+    box-shadow: 0 0 5px #fff;
+    grid-template-columns: .3fr 3fr 1fr;
     grid-template-areas:
-        'date_time date_time'
-        'drinks bill'
-        'apps bill'
-        'lunch bill'
-        'dinner bill'
-        'dessert bill';
+        'date_time date_time date_time'
+        'drinks_title drinks bill'
+        'apps_title apps bill'
+        'lunch_title lunch bill'
+        'dinner_title dinner bill'
+        'dessert_title dessert bill';
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+    padding-left: 5px;
+}
+
+.menu-item {
+    cursor: pointer;
+    color: white;
+    word-wrap: break-word;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(111, 111, 243);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.3em;
+    line-height: 1.5;
+}
+
+.menu-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#add-item-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    grid-area: date_time;
 }
 
 #date-time {
     grid-area: date_time;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    color: black;
+    background-color: rgb(84, 194, 238);
+    border-radius: 5px 5px 0 0;
+}
+
+#drinks-title {
+    grid-area: drink_title;
 }
 
 #drinks {
     grid-area: drinks;
 }
 
+#apps-title {
+    grid-area: apps_title;
+}
+
 #apps {
     grid-area: apps;
+}
+
+#lunch-title {
+    grid-area: lunch_title;
 }
 
 #lunch {
     grid-area: lunch;
 }
 
+#dinner-title {
+    grid-area: dinner_title;
+}
+
 #dinner {
     grid-area: dinner;
+}
+
+#dessert-title {
+    grid-area: dessert_title;
 }
 
 #dessert {
@@ -172,4 +229,28 @@ label {
 
 #bill {
     grid-area: bill;
+    background-color: #fff;
+    color: #000;
+    border-bottom-right-radius: 5px;
+}
+
+@media(max-width: 600px) {
+    .container {
+        width: 100%;
+        height: 100%;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            'date_time'
+            'drinks_title'
+            'drinks'
+            'apps_title'
+            'apps'
+            'lunch_title'
+            'lunch'
+            'dinner_title'
+            'dinner'
+            'dessert_title'
+            'dessert'
+            'bill';
+    }
 }
