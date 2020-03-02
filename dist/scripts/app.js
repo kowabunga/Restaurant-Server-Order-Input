@@ -5,7 +5,11 @@ const addItemBtn = document.getElementById('add-item-btn'),
   submitItemBtn = document.getElementById('submit-new-item'),
   menuItemButtons = document.querySelector('.menu-items-btns'),
   closeModalBtn = document.getElementById('close'),
-  modal = document.querySelector('.modal');
+  modal = document.querySelector('.modal'),
+  currentBill = document.getElementById('bill'),
+  menuSelector = document.getElementById('menu-category-selector'),
+  newItemName = document.getElementById('item-name'),
+  newItemPrice = document.getElementById('item-price');
 
 // classes
 const ui = new UI(),
@@ -32,9 +36,10 @@ setInterval(() => {
 // Event listeners
 addItemBtn.addEventListener('click', showAddItem);
 backItemBtn.addEventListener('click', hideAddItem);
-submitItemBtn.addEventListener('click', addNewItem);
+submitItemBtn.addEventListener('click', submitNewItem);
 menuItemButtons.addEventListener('click', displayModal);
 modal.addEventListener('click', addToBill);
+menuSelector.addEventListener('change', selectMenuCategory);
 
 // We can't add the close button here because it is generated dynamically.
 // To get around this, we add an event listener to the window object
@@ -54,8 +59,7 @@ function showAddItem(e) {
     addItemMenu.classList.add('visible');
   }
 }
-function hideAddItem(e) {
-  e.preventDefault();
+function hideAddItem() {
   if (addItemMenu.classList.contains('visible')) {
     addItemMenu.classList.remove('visible');
   }
@@ -99,4 +103,24 @@ function addToBill(e) {
   } else if (e.target.classList.contains('menu-item')) {
     ui.insertInBill(e.target.children);
   }
+}
+
+/* ---------------------------------------------------------------------- */
+// Function to get menu category that is to be modified
+function selectMenuCategory() {
+  return menuSelector.value;
+}
+
+function dataReturner(data) {
+  return data;
+}
+
+function submitNewItem(e) {
+  e.preventDefault();
+  let data;
+  const selectItem = selectMenuCategory();
+  console.log(data);
+  console.log(selectItem);
+  menuItems.postData(data, selectItem);
+  hideAddItem();
 }

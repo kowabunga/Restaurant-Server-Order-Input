@@ -130,10 +130,11 @@ label {
     background-color: rgb(95, 93, 93);
     box-shadow: 0 0 5px #fff;
     grid-template-columns: 3fr 1fr;
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: 1fr 4fr .3fr;
     grid-template-areas:
         'date_time date_time'
-        'items bill';
+        'items bill'
+        'items billbtn';
 }
 
 .row {
@@ -142,6 +143,7 @@ label {
     align-items: center;
     justify-content: center;
     padding-left: 5px;
+    grid-area: items;
 }
 
 
@@ -164,6 +166,7 @@ label {
     height: 80%;
     cursor: pointer;
     color: white;
+    font-size: 2em;
     background-color: rgb(111, 111, 243);
     margin: 10px 10px 0 0;
 }
@@ -187,10 +190,10 @@ label {
 }
 
 #bill {
+    display: grid;
     grid-area: bill;
     background-color: #fff;
     color: #000;
-    border-bottom-right-radius: 5px;
     line-height: 1.5;
     padding: 10%;
     overflow: scroll;
@@ -203,6 +206,15 @@ label {
 .bill-ul {
     text-align: left;
     list-style-type: none;
+}
+
+.bill-btn {
+    grid-area: billbtn;
+    background-color: rgb(111, 111, 243);
+    color: white;
+    font-size: 1.5em;
+    border-radius: 0px 5px 5px 0;
+    text-decoration: none;
 }
 
 /* ------------------------------------------------------------------- */
@@ -288,7 +300,8 @@ label {
         grid-template-areas:
             'date_time'
             'items'
-            'bill';
+            'bill'
+            'billbtn';
     }
 
     .modal-content {

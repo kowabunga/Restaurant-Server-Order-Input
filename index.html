@@ -13,13 +13,13 @@
       <button class="btn" id="back-item-btn">&times;</button>
       <div class="selector">
         <h1>Select Category to Add Item To</h1>
-        <select id="WhichMenuPart">
-          <option value="default" selected disabled hidden>Choose Menu Category</option>
+        <select id="menu-category-selector">
+          <option selected disabled hidden id="default" value="default">Choose Menu Category</option>
           <option id="drink-add" value="Drinks">Drinks</option>
-          <option id="app-add" value="apps">Appetizer</option>
-          <option id="lunch-add" value="lunch">Lunch</option>
-          <option id="dinner-add" value="dinner">Dinner</option>
-          <option id="dessert-add" value="dessert">Dessert</option>
+          <option id="app-add" value="Appetizers">Appetizer</option>
+          <option id="lunch-add" value="Lunch">Lunch</option>
+          <option id="dinner-add" value="Dinner">Dinner</option>
+          <option id="dessert-add" value="Dessert">Dessert</option>
         </select>
         <form class="form-group">
           <label for="item-name">Menu Item Name</label>
@@ -55,6 +55,7 @@
         </ul>
         <p id="total"></p>
       </div>
+      <button class="btn bill-btn">Print Bill</button>
 
       <!-- Modal -->
       <!-- Modal contents will be generated dynamically via javascript -->
