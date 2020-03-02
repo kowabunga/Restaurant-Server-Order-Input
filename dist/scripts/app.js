@@ -1,19 +1,28 @@
 // Caching DOM
-const addItemBtn = document.getElementById('add-item-btn'),
+const mainContainer = document.querySelector('.container'),
+  serverLoginBtn = document.getElementById('server-login-btn'),
   backItemBtn = document.getElementById('back-item-btn'),
-  addItemMenu = document.getElementById('addItem'),
-  submitItemBtn = document.getElementById('submit-new-item'),
+  loginBtnMain = document.getElementById('login'),
+  loginBtn = document.getElementById('submit-login'),
+  logoutBtn = document.getElementById('logout'),
   menuItemButtons = document.querySelector('.menu-items-btns'),
   closeModalBtn = document.getElementById('close'),
   modal = document.querySelector('.modal'),
   currentBill = document.getElementById('bill'),
-  menuSelector = document.getElementById('menu-category-selector'),
-  newItemName = document.getElementById('item-name'),
-  newItemPrice = document.getElementById('item-price');
+  serverName = document.getElementById('server-name'),
+  serverPass = document.getElementById('server-pass'),
+  formGroup = document.querySelector('.form-group'),
+  billServerName = document.getElementById('bill-server-name'),
+  clearBillBtn = document.getElementById('clear-bill'),
+  billUL = document.getElementById('bill-ul'),
+  billTotal = document.getElementById('total');
 
 // classes
 const ui = new UI(),
   menuItems = new MenuItems();
+
+// boolean for adding p element to login box
+let exists = false;
 
 /* ---------------------------------------------------------------------- */
 // Trim Date and get time
@@ -34,12 +43,13 @@ setInterval(() => {
 
 /* ---------------------------------------------------------------------- */
 // Event listeners
-addItemBtn.addEventListener('click', showAddItem);
-backItemBtn.addEventListener('click', hideAddItem);
-submitItemBtn.addEventListener('click', submitNewItem);
+serverLoginBtn.addEventListener('click', showLogin);
+backItemBtn.addEventListener('click', hideLogin);
+loginBtn.addEventListener('click', checkLogin);
+logoutBtn.addEventListener('click', logOut);
 menuItemButtons.addEventListener('click', displayModal);
 modal.addEventListener('click', addToBill);
-menuSelector.addEventListener('change', selectMenuCategory);
+clearBillBtn.addEventListener('click', clearBill);
 
 // We can't add the close button here because it is generated dynamically.
 // To get around this, we add an event listener to the window object
@@ -53,23 +63,16 @@ window.addEventListener('click', e => {
 
 /* ---------------------------------------------------------------------- */
 // show/hide add item sidebar+
-function showAddItem(e) {
+function showLogin(e) {
   e.preventDefault();
-  if (!addItemMenu.classList.contains('visible')) {
-    addItemMenu.classList.add('visible');
+  if (!loginBtnMain.classList.contains('visible')) {
+    loginBtnMain.classList.add('visible');
   }
 }
-function hideAddItem() {
-  if (addItemMenu.classList.contains('visible')) {
-    addItemMenu.classList.remove('visible');
+function hideLogin() {
+  if (loginBtnMain.classList.contains('visible')) {
+    loginBtnMain.classList.remove('visible');
   }
-}
-
-// Add new item to menu
-function addNewItem(e) {
-  e.preventDefault();
-  hideAddItem(e);
-  console.log('New item added.');
 }
 
 // Display/Close modal
@@ -106,21 +109,64 @@ function addToBill(e) {
 }
 
 /* ---------------------------------------------------------------------- */
-// Function to get menu category that is to be modified
-function selectMenuCategory() {
-  return menuSelector.value;
-}
-
-function dataReturner(data) {
-  return data;
-}
-
-function submitNewItem(e) {
+// Check login validity
+// for simplicity, it is currently just empty strings
+function checkLogin(e) {
   e.preventDefault();
-  let data;
-  const selectItem = selectMenuCategory();
-  console.log(data);
-  console.log(selectItem);
-  menuItems.postData(data, selectItem);
-  hideAddItem();
+  if (serverName.value !== '' && serverPass.value !== '') {
+    billServerName.innerHTML = `Server: ${serverName.value}`;
+    hideLogin();
+    serverLoginBtn.style.display = 'none';
+    setTimeout(() => {
+      mainContainer.style.display = 'grid';
+      serverName.value = '';
+      serverPass.value = '';
+    }, 500);
+  } else if (serverName.value === '' && serverPass.value === '') {
+    serverName.classList.add('wrong');
+    serverPass.classList.add('wrong');
+    appendError('Invalid username/pass.');
+  } else if (serverName.value === '') {
+    serverName.classList.add('wrong');
+    appendError('Invalid username.');
+  } else if (serverPass.value === '') {
+    serverPass.classList.add('wrong');
+    appendError('Invalid password.');
+  }
+}
+
+// logout and return to server login
+function logOut(e) {
+  e.preventDefault();
+  mainContainer.style.display = 'none';
+  setTimeout(() => {
+    serverLoginBtn.style.display = 'block';
+  }, 150);
+}
+
+// Append error message to login IF exists is true (!false), otherwise don't.
+// prevents multiple error messages
+function appendError(msg) {
+  if (!exists) {
+    exists = true;
+    const p = document.createElement('p');
+    p.innerHTML = `<br>${msg}`;
+    formGroup.appendChild(p).style.color = 'crimson';
+    setTimeout(() => {
+      p.remove();
+      if (serverName.classList.contains('wrong')) {
+        serverName.classList.remove('wrong');
+      }
+      if (serverPass.classList.contains('wrong')) {
+        serverPass.classList.remove('wrong');
+      }
+      exists = false;
+    }, 3000);
+  }
+}
+
+// clear bill
+function clearBill() {
+  billUL.innerHTML = '';
+  billTotal.innerText = '';
 }

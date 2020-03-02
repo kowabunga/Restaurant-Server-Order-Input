@@ -34,24 +34,24 @@ body {
 
 /* ---------------------------------------------------------------------- */
 /* Add Item Section */
-.addItem {
+.login {
     position: absolute;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 40vw;
+    width: 100vw;
     height: 100vh;
     background-color: #333;
     color: white;
     box-shadow: 0 0 5px #000;
-    transform: translateX(-50vw);
+    transform: translateX(-101vw);
     transition: .3s ease-in;
     z-index: 1;
 }
 
-.addItem.visible {
+.login.visible {
     transform: translateX(0);
 }
 
@@ -60,17 +60,15 @@ body {
     width: 15%;
     top: 2%;
     left: 90%;
-    transform: translate(-75%, -2%);
+    transform: translate(-90%, -2%);
     font-size: 2em;
 }
 
-#submit-new-item {
-    position: absolute;
+#submit-login {
     width: 90%;
     display: block;
-    bottom: 3%;
-    left: 50%;
-    transform: translate(-50%, -3%);
+    padding: 10px;
+    margin-top: 3em;
 }
 
 .selector {
@@ -103,7 +101,11 @@ label {
     border-radius: 3px;
     border: none;
     padding: 5px;
-    width: 75%;
+    width: 100%;
+}
+
+.form-group p {
+    font-size: 1.5em;
 }
 
 .input-field {
@@ -114,13 +116,18 @@ label {
     box-shadow: 0 0 10px #298fe2;
 }
 
+#server-name.wrong,
+#server-pass.wrong {
+    box-shadow: 0 0 10px crimson;
+}
+
 /* ---------------------------------------------------------------------- */
 /* main container */
 
 .container {
+    display: none;
     position: relative;
     z-index: 0;
-    display: grid;
     height: 90vh;
     width: 90vw;
     top: 50px;
@@ -129,13 +136,15 @@ label {
     color: white;
     background-color: rgb(95, 93, 93);
     box-shadow: 0 0 5px #fff;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr 4fr .3fr;
     grid-template-areas:
         'date_time date_time'
         'items bill'
         'items billbtn';
+    animation: showApp .5s ease forwards;
 }
+
 
 .row {
     display: flex;
@@ -145,7 +154,6 @@ label {
     padding-left: 5px;
     grid-area: items;
 }
-
 
 .menu-items-btns {
     grid-area: items;
@@ -171,11 +179,21 @@ label {
     margin: 10px 10px 0 0;
 }
 
-#add-item-btn {
+#server-login-btn {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    grid-area: date_time;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    padding: .5em;
+    animation: serverLoginShow .3s ease-in forwards;
+}
+
+#logout {
+    position: absolute;
+    top: 2.5%;
+    right: 2.5%;
+    transform: translate(-2.5%, -2.5%);
 }
 
 #date-time {
@@ -199,8 +217,9 @@ label {
     overflow: scroll;
 }
 
-#bill h3 {
+.info {
     text-align: center;
+    line-height: 2;
 }
 
 .bill-ul {
@@ -208,13 +227,28 @@ label {
     list-style-type: none;
 }
 
-.bill-btn {
+.bill-buttons {
     grid-area: billbtn;
+    display: flex;
+}
+
+#print-bill,
+#clear-bill {
+    width: 100%;
     background-color: rgb(111, 111, 243);
     color: white;
     font-size: 1.5em;
-    border-radius: 0px 5px 5px 0;
     text-decoration: none;
+    border-radius: 0;
+}
+
+#print-bill:hover,
+#clear-bill:hover {
+    background-color: rgb(17, 88, 182);
+}
+
+#print-bill {
+    border-bottom-right-radius: 5px;
 }
 
 /* ------------------------------------------------------------------- */
@@ -311,6 +345,26 @@ label {
 
 /* ------------------------------------------------------------------- */
 @keyframes showModal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes showApp {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes serverLoginShow {
     from {
         opacity: 0;
     }
