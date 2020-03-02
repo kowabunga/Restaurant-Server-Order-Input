@@ -191,6 +191,18 @@ label {
     background-color: #fff;
     color: #000;
     border-bottom-right-radius: 5px;
+    line-height: 1.5;
+    padding: 10%;
+    overflow: scroll;
+}
+
+#bill h3 {
+    text-align: center;
+}
+
+.bill-ul {
+    text-align: left;
+    list-style-type: none;
 }
 
 /* ------------------------------------------------------------------- */

@@ -34,6 +34,7 @@ addItemBtn.addEventListener('click', showAddItem);
 backItemBtn.addEventListener('click', hideAddItem);
 submitItemBtn.addEventListener('click', addNewItem);
 menuItemButtons.addEventListener('click', displayModal);
+modal.addEventListener('click', addToBill);
 
 // We can't add the close button here because it is generated dynamically.
 // To get around this, we add an event listener to the window object
@@ -70,8 +71,11 @@ function addNewItem(e) {
 // Display/Close modal
 function displayModal(e) {
   e.preventDefault();
-  getModalData(e.target.id);
-  modal.style.display = 'block';
+  // make sure only buttons works
+  if (e.target.classList.contains('menu-btns')) {
+    getModalData(e.target.id);
+    modal.style.display = 'block';
+  }
 }
 
 function closeModal() {
@@ -84,4 +88,15 @@ function getModalData(target) {
     .getData()
     .then(data => ui.generateModalHtml(data, target))
     .catch(err => console.log(err));
+}
+
+/* ---------------------------------------------------------------------- */
+// This function ensures that the clicked object is the menu item itself, not any of its children or parents
+function addToBill(e) {
+  e.preventDefault();
+  if (e.target.parentElement.classList.contains('menu-item')) {
+    ui.insertInBill(e.target.parentElement.children);
+  } else if (e.target.classList.contains('menu-item')) {
+    ui.insertInBill(e.target.children);
+  }
 }
