@@ -49,7 +49,7 @@ loginBtn.addEventListener('click', checkLogin);
 logoutBtn.addEventListener('click', logOut);
 menuItemButtons.addEventListener('click', displayModal);
 modal.addEventListener('click', addToBill);
-clearBillBtn.addEventListener('click', clearBill);
+clearBillBtn.addEventListener('click', ui.clearBill);
 
 // We can't add the close button here because it is generated dynamically.
 // To get around this, we add an event listener to the window object
@@ -163,10 +163,4 @@ function appendError(msg) {
       exists = false;
     }, 3000);
   }
-}
-
-// clear bill
-function clearBill() {
-  billUL.innerHTML = '';
-  billTotal.innerText = '';
 }

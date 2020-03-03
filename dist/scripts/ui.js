@@ -5,6 +5,8 @@ class UI {
     this.billUL = document.getElementById('bill-ul');
     this.billTotalValue = document.getElementById('total');
     this.billTotal = [];
+    // need to bind this function to ensure that the clearBill function is bound to the class, not to the object whose event listener is calling it.
+    this.clearBill = this.clearBill.bind(this);
   }
 
   populateDate(time) {
@@ -85,5 +87,10 @@ class UI {
 
       Thank you for dining with us. Please come again!
     `;
+  }
+
+  clearBill() {
+    this.billUL.innerHTML = '';
+    this.billTotalValue.innerText = '';
   }
 }
