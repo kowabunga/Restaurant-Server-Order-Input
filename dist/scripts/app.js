@@ -15,7 +15,8 @@ const mainContainer = document.querySelector('.container'),
   billServerName = document.getElementById('bill-server-name'),
   clearBillBtn = document.getElementById('clear-bill'),
   billUL = document.getElementById('bill-ul'),
-  billTotal = document.getElementById('total');
+  billTotal = document.getElementById('total'),
+  billTime = document.getElementById('bill-time');
 
 // classes
 const ui = new UI(),
@@ -26,19 +27,11 @@ let exists = false;
 
 /* ---------------------------------------------------------------------- */
 // Trim Date and get time
-function trimDate() {
-  let trimmedDate = new Date();
-  let hours = trimmedDate.getHours() < 12 ? trimmedDate.getHours() : trimmedDate.getHours() - 12;
-  let minutes = trimmedDate.getMinutes() > 9 ? trimmedDate.getMinutes() : `0${trimmedDate.getMinutes()}`;
-  let seconds = trimmedDate.getSeconds() > 9 ? trimmedDate.getSeconds() : `0${trimmedDate.getSeconds()}`;
-  let currentTime = trimmedDate.getHours < 12 ? `${hours}:${minutes}:${seconds} AM` : `${hours}:${minutes}:${seconds} PM`;
-  return `${trimmedDate.toDateString()} \xa0 \xa0 \xa0 \xa0 ${currentTime}`;
-}
 
 // Call upon load, then call every second for updating
-ui.populateDate(trimDate());
+ui.populateDate();
 setInterval(() => {
-  ui.populateDate(trimDate());
+  ui.populateDate();
 }, 1000);
 
 /* ---------------------------------------------------------------------- */
@@ -114,6 +107,7 @@ function addToBill(e) {
 function checkLogin(e) {
   e.preventDefault();
   if (serverName.value !== '' && serverPass.value !== '') {
+    billTime.innerHTML = `${ui.trimDate()}`;
     billServerName.innerHTML = `Server: ${serverName.value}`;
     hideLogin();
     serverLoginBtn.style.display = 'none';

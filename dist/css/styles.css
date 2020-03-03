@@ -7,9 +7,6 @@
     font-family: 'Lato', sans-serif;
 }
 
-html {
-    overflow: hidden;
-}
 
 body {
     background-color: rgb(17, 17, 17);
@@ -128,7 +125,7 @@ label {
     display: none;
     position: relative;
     z-index: 0;
-    height: 90vh;
+    min-height: 90vh;
     width: 90vw;
     top: 50px;
     margin: 0 auto;
@@ -137,7 +134,7 @@ label {
     background-color: rgb(95, 93, 93);
     box-shadow: 0 0 5px #fff;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 4fr .3fr;
+    grid-template-rows: 1fr minmax(0, 4fr) .3fr;
     grid-template-areas:
         'date_time date_time'
         'items bill'
@@ -207,14 +204,24 @@ label {
     border-radius: 5px 5px 0 0;
 }
 
-#bill {
+.bill-outline {
+    background-color: #fff;
     display: grid;
+    height: 100%;
     grid-area: bill;
+    align-items: center;
+    justify-items: center;
+}
+
+#bill {
+    width: 90%;
+    height: 90%;
     background-color: #fff;
     color: #000;
     line-height: 1.5;
     padding: 10%;
     overflow: scroll;
+    border: 2px solid;
 }
 
 .info {
@@ -331,12 +338,14 @@ label {
 @media(max-width: 600px) {
     .container {
         grid-template-columns: 1fr;
+        grid-template-rows: 1fr minmax(0, 2fr) .3fr;
         grid-template-areas:
             'date_time'
             'items'
             'bill'
             'billbtn';
     }
+
 
     .modal-content {
         width: 90%;

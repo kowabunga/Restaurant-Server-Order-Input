@@ -9,8 +9,17 @@ class UI {
     this.clearBill = this.clearBill.bind(this);
   }
 
-  populateDate(time) {
-    this.timeSection.innerText = time;
+  trimDate() {
+    let trimmedDate = new Date();
+    let hours = trimmedDate.getHours() < 12 ? trimmedDate.getHours() : trimmedDate.getHours() - 12;
+    let minutes = trimmedDate.getMinutes() > 9 ? trimmedDate.getMinutes() : `0${trimmedDate.getMinutes()}`;
+    let seconds = trimmedDate.getSeconds() > 9 ? trimmedDate.getSeconds() : `0${trimmedDate.getSeconds()}`;
+    let currentTime = trimmedDate.getHours < 12 ? `${hours}:${minutes}:${seconds} AM` : `${hours}:${minutes}:${seconds} PM`;
+    return `${trimmedDate.toDateString()} \xa0 \xa0 \xa0 \xa0 ${currentTime}`;
+  }
+
+  populateDate() {
+    this.timeSection.innerText = this.trimDate();
   }
 
   // App.js calls function sending json file data, and the id of the target button
@@ -77,8 +86,8 @@ class UI {
 
     // add total to bill
     this.billTotalValue.innerText = `
-      SUBTOTAL : $ ${total}
-      TAX: $ ${tax}
+      SUBTOTAL : $${total}
+      TAX: $${tax}
       GRATUITY: 
       \xa0  \xa0 \xa0  \xa0  \xa0  \xa0 15%: $${(total * 0.15).toFixed(2)}
       \xa0  \xa0 \xa0  \xa0  \xa0  \xa0 18%: $${(total * 0.18).toFixed(2)}
