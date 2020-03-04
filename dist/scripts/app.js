@@ -165,6 +165,7 @@
   // print button opens bill in new window.
   function getBill() {
     let newWindow = window.open();
+    // grab all html-formatted elements so it appears correctly, rather than a blob of text
     newWindow.document.write(fullBill.innerHTML);
     newWindow.document.body.style = `
       position:absolute;

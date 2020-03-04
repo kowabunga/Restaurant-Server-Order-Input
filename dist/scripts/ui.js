@@ -92,9 +92,9 @@ class UI {
       SUBTOTAL : $${total}
       TAX: $${tax}
       GRATUITY: 
-      \xa0  \xa0 \xa0  \xa0  \xa0  \xa0 15%: $${parseFloat(total * 0.15).toFixed(2)}
-      \xa0  \xa0 \xa0  \xa0  \xa0  \xa0 18%: $${parseFloat(total * 0.18).toFixed(2)}
-      \xa0  \xa0 \xa0  \xa0  \xa0  \xa0 20%: $${parseFloat(total * 0.2).toFixed(2)}
+      15%: $${parseFloat(total * 0.15).toFixed(2)}
+      18%: $${parseFloat(total * 0.18).toFixed(2)}
+      20%: $${parseFloat(total * 0.2).toFixed(2)}
       GRAND TOTAL: $ ${parseFloat(total + tax).toFixed(2)}
 
       Thank you for dining with us. Please come again!
