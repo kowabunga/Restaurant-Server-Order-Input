@@ -1,7 +1,8 @@
 class UI {
   constructor() {
     this.timeSection = document.getElementById('date-time');
-    this.modal = document.querySelector('.modal');
+    this.menuModal = document.getElementById('menu-item-modal');
+    this.billModal = document.getElementById('bill-print-modal');
     this.billUL = document.getElementById('bill-ul');
     this.billTotalValue = document.getElementById('total');
     this.billTotal = [];
@@ -46,10 +47,10 @@ class UI {
     let menu_items = '';
     data[arrName].forEach(item => {
       menu_items += `
-        <div class="menu-item">
+        <button class="menu-item btn">
           <div class="name">${item.name}</div>
           <div class="price">$${item.price}</div>
-        </div>
+        </button>
       `;
     });
 
@@ -65,7 +66,7 @@ class UI {
       </div>
     `;
 
-    this.modal.innerHTML = output;
+    this.menuModal.innerHTML = output;
   }
 
   // This function takes the clicked menu item in as a parameter and extracts the item name and price
@@ -81,18 +82,20 @@ class UI {
     const li = document.createElement('li');
     li.innerText = `${name} \xa0 \xa0 $${price}`;
     this.billUL.appendChild(li);
-    let total = +this.billTotal.reduce((acc, curr) => acc + curr).toFixed(2);
-    let tax = +(this.billTotal.reduce((acc, curr) => acc + curr) * 0.0875).toFixed(2);
+    // parse string as float, then fix it to two decimal places.
+    // this ensures that the string 1.80 stays as 1.80, not 1.8, as a number
+    let total = parseFloat(this.billTotal.reduce((acc, curr) => acc + curr)).toFixed(2);
+    let tax = parseFloat(this.billTotal.reduce((acc, curr) => acc + curr) * 0.0875).toFixed(2);
 
     // add total to bill
     this.billTotalValue.innerText = `
       SUBTOTAL : $${total}
       TAX: $${tax}
       GRATUITY: 
-      \xa0  \xa0 \xa0  \xa0  \xa0  \xa0 15%: $${(total * 0.15).toFixed(2)}
-      \xa0  \xa0 \xa0  \xa0  \xa0  \xa0 18%: $${(total * 0.18).toFixed(2)}
-      \xa0  \xa0 \xa0  \xa0  \xa0  \xa0 20%: $${(total * 0.2).toFixed(2)}
-      GRAND TOTAL: $ ${(total + tax).toFixed(2)}
+      \xa0  \xa0 \xa0  \xa0  \xa0  \xa0 15%: $${parseFloat(total * 0.15).toFixed(2)}
+      \xa0  \xa0 \xa0  \xa0  \xa0  \xa0 18%: $${parseFloat(total * 0.18).toFixed(2)}
+      \xa0  \xa0 \xa0  \xa0  \xa0  \xa0 20%: $${parseFloat(total * 0.2).toFixed(2)}
+      GRAND TOTAL: $ ${parseFloat(total + tax).toFixed(2)}
 
       Thank you for dining with us. Please come again!
     `;
@@ -101,5 +104,6 @@ class UI {
   clearBill() {
     this.billUL.innerHTML = '';
     this.billTotalValue.innerText = '';
+    this.billTotal.length = 0;
   }
 }
