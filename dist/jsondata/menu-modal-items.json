@@ -9,6 +9,10 @@
       "price": 1.99
     },
     {
+      "name": "Juice",
+      "price": 2.99
+    },
+    {
       "name": "Red Wine Glass",
       "price": 8.99
     },
@@ -25,7 +29,7 @@
       "price": 24.99
     },
     {
-      "name": "Beer Bottle",
+      "name": "Beer (Bottle)",
       "price": 5.99
     }
   ],
@@ -49,12 +53,28 @@
     {
       "name": "Nachos",
       "price": 6.99
+    },
+    {
+      "name": "Fried Pickles",
+      "price": 5.99
+    },
+    {
+      "name": "Ball Park Pretzel",
+      "price": 5.99
+    },
+    {
+      "name": "Chicken Quesa",
+      "price": 9.99
     }
   ],
   "Lunch": [
     {
       "name": "Classic Burger",
       "price": 10.99
+    },
+    {
+      "name": "Bacon Cheese Burger",
+      "price": 12.99
     },
     {
       "name": "Lobster Mac 'n Cheese",
@@ -71,6 +91,14 @@
     {
       "name": "Tuna Salad Sandwich",
       "price": 8.99
+    },
+    {
+      "name": "BLT",
+      "price": 7.99
+    },
+    {
+      "name": "Roast Beef Sandwich",
+      "price": 12.99
     }
   ],
   "Dinner": [
@@ -93,12 +121,24 @@
     {
       "name": "Roasted Duck",
       "price": 19.99
+    },
+    {
+      "name": "Potluck Dinner",
+      "price": 24.99
+    },
+    {
+      "name": "Whole Lobster",
+      "price": 29.99
+    },
+    {
+      "name": "Fish n' Chips",
+      "price": 11.99
     }
   ],
   "Dessert": [
     {
-      "name": "Rainbow Cake",
-      "price": 7.99
+      "name": "Chocolate Brownie",
+      "price": 4.99
     },
     {
       "name": "Fudge Explosion",
@@ -115,6 +155,18 @@
     {
       "name": "Rainbow Cake",
       "price": 7.99
+    },
+    {
+      "name": "Strawberry Puffs",
+      "price": 8.99
+    },
+    {
+      "name": "Lemon Meringue Slice",
+      "price": 3.99
+    },
+    {
+      "name": "Hot Apple Pie Slice",
+      "price": 3.99
     }
   ]
 }

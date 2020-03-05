@@ -158,7 +158,7 @@
           serverPass.classList.remove('wrong');
         }
         exists = false;
-      }, 3000);
+      }, 5000);
     }
   }
 
