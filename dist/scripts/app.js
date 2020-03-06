@@ -1,3 +1,4 @@
+'use strict';
 (function main() {
   // Caching DOM
   const mainContainer = document.querySelector('.container'),
@@ -55,7 +56,7 @@
   });
 
   /* ---------------------------------------------------------------------- */
-  // show/hide add item sidebar+
+  // show/hide add item sidebar
   function showLogin(e) {
     e.preventDefault();
     if (!loginBtnMain.classList.contains('visible')) {
@@ -71,7 +72,7 @@
   // Display/Close modal
   function displayModal(e) {
     e.preventDefault();
-    // make sure only buttons works
+    // make sure only buttons register click
     if (e.target.classList.contains('menu-btns')) {
       getModalData(e.target.id);
       menuModal.style.display = 'block';
@@ -82,6 +83,7 @@
     menuModal.style.display = 'none';
   }
 
+  /* ---------------------------------------------------------------------- */
   // This function handles getting the data to create the modal and calls a UI class function to generate the modal
   function getModalData(target) {
     menuItems
@@ -103,14 +105,18 @@
 
   /* ---------------------------------------------------------------------- */
   // Check login validity
-  // for simplicity, it is currently just empty strings
   function checkLogin(e) {
     e.preventDefault();
+    // For simplicity, check if user enter's anything at all
     if (serverName.value !== '' && serverPass.value !== '') {
+      // get the time of login to input as bill date
       billTime.innerHTML = `${ui.trimDate()}`;
+      // add server name to bill
       billServerName.innerHTML = `Server: ${serverName.value}`;
+      // hide login section
       hideLogin();
       serverLoginBtn.style.display = 'none';
+      // after 500ms, show logout button, show main app, reset server name/pass input
       setTimeout(() => {
         logoutBtn.style.display = 'block';
         mainContainer.style.display = 'grid';
@@ -131,9 +137,11 @@
     }
   }
 
+  /* ---------------------------------------------------------------------- */
   // logout and return to server login
   function logOut(e) {
     e.preventDefault();
+    // on click, hide main container, logout button, and show login button
     mainContainer.style.display = 'none';
     logoutBtn.style.display = 'none';
     setTimeout(() => {
@@ -162,6 +170,7 @@
     }
   }
 
+  /* ---------------------------------------------------------------------- */
   // print button opens bill in new window.
   function getBill() {
     let newWindow = window.open();

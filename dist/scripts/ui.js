@@ -101,6 +101,7 @@ class UI {
     `;
   }
 
+  // On button, clear all bill information
   clearBill() {
     this.billUL.innerHTML = '';
     this.billTotalValue.innerText = '';
