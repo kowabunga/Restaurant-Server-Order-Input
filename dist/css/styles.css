@@ -131,8 +131,7 @@ label {
     display: none;
     position: relative;
     z-index: 0;
-    max-height: 90vh;
-    min-height: 90vh;
+    min-height: 900px;
     width: 90vw;
     top: 50px;
     margin: 0 auto;
@@ -353,6 +352,7 @@ label {
 
 @media(max-width: 600px) {
     .container {
+        min-height: 1000px;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr minmax(0, 2fr) .3fr;
         grid-template-areas:
@@ -361,7 +361,6 @@ label {
             'bill'
             'billbtn';
     }
-
 
     .modal-content {
         width: 90%;
