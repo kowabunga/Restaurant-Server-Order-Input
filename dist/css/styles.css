@@ -354,6 +354,10 @@ label {
             'billbtn';
     }
 
+    .bill-outline {
+        max-height: 10em;
+    }
+
     .modal-content {
         width: 90%;
     }
