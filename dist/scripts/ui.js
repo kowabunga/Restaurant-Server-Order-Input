@@ -7,8 +7,7 @@ class UI {
     this.billTotalValue = document.getElementById('total');
     this.billTotal = [];
     // need to bind this function to ensure that the clearBill function is bound to the class, not to the object whose event listener is calling it.
-    // Unnecessary when using arrow function
-    // this.clearBill = this.clearBill.bind(this);
+    this.clearBill = this.clearBill.bind(this);
   }
 
   trimDate() {
@@ -103,10 +102,9 @@ class UI {
   }
 
   // On button, clear all bill information
-  // Using arrow function prevents manual binding of this in constructor
-  clearBill = () => {
+  clearBill() {
     this.billUL.innerHTML = '';
     this.billTotalValue.innerText = '';
     this.billTotal.length = 0;
-  };
+  }
 }
