@@ -7,4 +7,3 @@ A little program to mimick the front end of a restaurant application where serve
 - Modals. Modals are very, very useful.
 - Opening up new tabs/window with JavaScript and adding stuff to it (potential, much so).
 - Animating website with CSS keyframes/transitions.
-- Mimicking of login/logout features
