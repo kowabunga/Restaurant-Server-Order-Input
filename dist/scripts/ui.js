@@ -12,10 +12,22 @@ class UI {
 
   trimDate() {
     let trimmedDate = new Date();
-    let hours = trimmedDate.getHours() < 12 ? trimmedDate.getHours() : trimmedDate.getHours() - 12;
-    let minutes = trimmedDate.getMinutes() > 9 ? trimmedDate.getMinutes() : `0${trimmedDate.getMinutes()}`;
-    let seconds = trimmedDate.getSeconds() > 9 ? trimmedDate.getSeconds() : `0${trimmedDate.getSeconds()}`;
-    let currentTime = trimmedDate.getHours < 12 ? `${hours}:${minutes}:${seconds} AM` : `${hours}:${minutes}:${seconds} PM`;
+    let hours =
+      trimmedDate.getHours() < 12
+        ? trimmedDate.getHours()
+        : trimmedDate.getHours() - 12;
+    let minutes =
+      trimmedDate.getMinutes() > 9
+        ? trimmedDate.getMinutes()
+        : `0${trimmedDate.getMinutes()}`;
+    let seconds =
+      trimmedDate.getSeconds() > 9
+        ? trimmedDate.getSeconds()
+        : `0${trimmedDate.getSeconds()}`;
+    let currentTime =
+      trimmedDate.getHours < 12
+        ? `${hours}:${minutes}:${seconds} AM`
+        : `${hours}:${minutes}:${seconds} PM`;
     return `${trimmedDate.toDateString()} \xa0 \xa0 \xa0 \xa0 ${currentTime}`;
   }
 
@@ -84,8 +96,12 @@ class UI {
     this.billUL.appendChild(li);
     // parse string as float, then fix it to two decimal places.
     // this ensures that the string 1.80 stays as 1.80, not 1.8, as a number
-    let total = parseFloat(this.billTotal.reduce((acc, curr) => acc + curr)).toFixed(2);
-    let tax = parseFloat(this.billTotal.reduce((acc, curr) => acc + curr) * 0.0875).toFixed(2);
+    let total = parseFloat(
+      this.billTotal.reduce((acc, curr) => acc + curr)
+    ).toFixed(2);
+    let tax = parseFloat(
+      this.billTotal.reduce((acc, curr) => acc + curr) * 0.0875
+    ).toFixed(2);
 
     // add total to bill
     this.billTotalValue.innerText = `
@@ -95,7 +111,7 @@ class UI {
       15%: $${parseFloat(total * 0.15).toFixed(2)}
       18%: $${parseFloat(total * 0.18).toFixed(2)}
       20%: $${parseFloat(total * 0.2).toFixed(2)}
-      GRAND TOTAL: $ ${parseFloat(total + tax).toFixed(2)}
+      GRAND TOTAL: $ ${(parseFloat(total) + parseFloat(tax)).toFixed(2)}
 
       Thank you for dining with us. Please come again!
     `;
