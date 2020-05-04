@@ -1,6 +1,6 @@
 # Restaurant-Server-Order-Input
 
-Front end of a restaurant application where server's can input customer orders.
+A little program to mimick the front end of a restaurant application where server's can input customer orders and print their bill.
 
 # What I Learned
 
